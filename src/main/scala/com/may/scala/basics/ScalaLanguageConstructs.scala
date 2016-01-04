@@ -1,6 +1,6 @@
-package com.may.scala
+package com.may.scala.basics
 
-object ScalaExamples {
+object ScalaLangaugeConstructs {
 
   /**
    * Keyword: type
@@ -16,7 +16,7 @@ object ScalaExamples {
   /**
    * Var Args in Scala
    */
-  private def makeMap(x: (Int, String)*) = List(x:_*)
+  private def makeMap(x: (Int, String)*) = Map(x:_*)
   
   
   def main(args: Array[String]): Unit = {
