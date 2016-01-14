@@ -3,9 +3,11 @@ package com.may.java.collections;
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.WeakHashMap;
 
 public class Maps {
 
@@ -60,7 +62,7 @@ public class Maps {
 		 */
 
 		/**
-		 * <b> 2. LinekedHashMap </b>
+		 * <b> 2. LinkedHashMap </b>
 		 * <p>
 		 * - backed by a hash table and linkedlist. his implementation differs
 		 * from HashMap in that it maintains a doubly-linked list running
@@ -130,23 +132,72 @@ public class Maps {
 		enumMap.put(Day.SUNDAY, 1);
 		enumMap.put(Day.SATURDAY, 7);
 		enumMap.forEach((k, v) -> System.out.println(k + ":" + v));
-		
+
 		// synchronize the wrapping object or do below
 		Collections.synchronizedMap(enumMap);
-		
-		
+
 		/**
-		 * <b> 5. EnumMap </b>
+		 * <b> 5. WeakHashMap </b>
 		 * <p>
-		 * - specialized Map implementation for use with enum type keys. Enum
-		 * maps are represented internally as arrays
+		 * - An entry in a WeakHashMap will automatically be removed when its
+		 * key is no longer in ordinary use.
 		 * </p>
 		 * <p>
 		 * - this implementation is not synchronized
 		 * </p>
 		 * 
 		 */
+		Map<String, Integer> weakHashMap = new WeakHashMap<String, Integer>();
+		System.out
+				.println("WeakHashMap :: useful for space constraints, weak references are deleted");
+		String strongReference = new String("strrefkey");
+		String weakReference = new String("weakrefkey");
+		weakHashMap.put(strongReference, 1);
+		weakHashMap.put(weakReference, 2);
+		System.out.println("WeakHashMap size:- " + weakHashMap.size());
+		weakReference = null;
+		System.gc();
+		System.out.println("WeakHashMap size:- " + weakHashMap.size());
+
 		
+		
+		/**
+		 * <b> 6. IdentityHashMap </b>
+		 * <p>
+		 * - This class implements the Map interface with a hash table, using
+		 * reference-equality in place of object-equality when comparing keys it
+		 * intentionally violates Map's general contract, which mandates the use
+		 * of the equals method when comparing objects. This class is designed
+		 * for use only in the rare cases wherein reference-equality semantics
+		 * are required.
+		 * </p>
+		 * <p>
+		 * - this implementation is not synchronized
+		 * </p>
+		 * 
+		 */
+		Map<String, Integer> identityHashMap = new IdentityHashMap<String, Integer>();
+		System.out
+				.println("IdentityHashMap :: keys compared using refrence equality");
+		String ref1 = new String("key");
+		String ref12 = ref1;
+		String ref2 = new String("key");
+		identityHashMap.put(ref1, 1);
+		identityHashMap.put(ref12, 1);
+		identityHashMap.put(ref2, 1);
+		identityHashMap.forEach((k, v) -> System.out.println(k + ":" + v));
+
+		/**
+		 * <b> 6. ConcurrentHashMap </b>
+		 * <p>
+		 * - A hash table supporting full concurrency of retrievals and high
+		 * expected concurrency for updates.
+		 * </p>
+		 * <p>
+		 * 
+		 * </p>
+		 * 
+		 */
 	}
 
 }
