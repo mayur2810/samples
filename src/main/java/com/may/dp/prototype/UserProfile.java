@@ -1,5 +1,8 @@
 package com.may.dp.prototype;
 
+/**
+ * A cloneable object
+ */
 public class UserProfile implements Cloneable {
 
 	private String firstName;

@@ -9,8 +9,8 @@ public class UserProfileActions {
 
 		if (userProfilePrototype == null) {
 			userProfilePrototype = new UserProfile();
-			userProfilePrototype.setFirstName("Issac");
-			userProfilePrototype.setLastName("Newton");
+			userProfilePrototype.setFirstName("Albert");
+			userProfilePrototype.setLastName("Einstien");
 			userProfilePrototype.setCity("Zurich");
 			userProfilePrototype.setCountry("Germany");
 		}
@@ -22,8 +22,7 @@ public class UserProfileActions {
 	}
 
 	/**
-	 * Clone the object
-	 * @return
+	 * Use cloned object for doing modification on the prototype object
 	 */
 	public static UserProfile getProfileClone() {
 
