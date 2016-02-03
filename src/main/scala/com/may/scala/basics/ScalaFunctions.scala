@@ -39,6 +39,7 @@ object ScalaFunctions {
    *
    */
   def partialSumFunc = sumMethod(10, 10, _: Int)
+  
   val partialSumFunc1 = sumFuncLiteral(10, 10, _: Int)
   val partialSubstractFunc1 = substractFuncLiteral(_, _, _)
 
