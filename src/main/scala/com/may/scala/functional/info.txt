@@ -1,0 +1,2 @@
+All functional derivatives in Scala generally follow type class pattern for implementation.
+We define implicit abstraction for different types that are called through the functional structures.

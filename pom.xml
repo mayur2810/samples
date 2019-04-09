@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.may</groupId>
-	<artifactId>spark-app</artifactId>
+	<artifactId>samples</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -29,7 +29,7 @@
 							<goal>testCompile</goal>
 						</goals>
 						<configuration>
-							<mainSourceDir>${project.build.sourceDirectory}/../java</mainSourceDir>
+							<sourceDir>${project.build.sourceDirectory}/../java</sourceDir>
 						</configuration>
 					</execution>
 				</executions>
@@ -50,6 +50,11 @@
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
 			<version>${scala.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.typelevel</groupId>
+			<artifactId>cats-core_2.11</artifactId>
+			<version>1.6.0</version>
 		</dependency>
 	</dependencies>
 </project>
