@@ -16,7 +16,18 @@ object FuturesDemo {
       case Success(value) => println(value.mkString(", "))
       case Failure(exception) => println(exception)
     }
-    Await.result(futureList, Duration("60 seconds"))
+    // Operations on future
+    val futureList1 = futureList.flatMap(i => Future(i.map(p => p / p)))
+
+    // Alternative for comprehension
+    val result = for {
+      i <- futureList
+      j <- Future(i.map(p => p / p))
+    } yield j
+
+    println(Await.result(futureList, Duration("60 seconds")))
+    println(Await.result(futureList1, Duration("60 seconds")))
+    println(Await.result(result, Duration("60 seconds")))
     // Another way to parallelize operations on list
     println(intList.par.map(i => i * i).map(i => i + i).mkString(", "))
   }
